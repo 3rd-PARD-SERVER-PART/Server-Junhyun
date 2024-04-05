@@ -16,19 +16,19 @@ public class FoodService {
     public void saveFood(FoodDto foodDto){
         foodRepository.saveFood(foodDto);
     }
-    public FoodDto findById(Integer cost){
-        return foodRepository.findById(cost);
+    public FoodDto findById(Integer foodId){
+        return foodRepository.findById(foodId);
     }
 
     public List<FoodDto> findAll(){
         return foodRepository.findAll();
     }
 
-    public void update(Integer cost, FoodDto foodDto){
-        foodRepository.update(cost,foodDto);
+    public void update(Integer foodId, FoodDto foodDto){
+        foodRepository.update(foodId,foodDto);
     }
 
-    public void delete(Integer cost){
-        foodRepository.delete(cost);
+    public void delete(Integer foodId){
+        foodRepository.delete(foodId);
     }
 }

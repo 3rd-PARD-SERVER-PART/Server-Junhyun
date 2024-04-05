@@ -9,7 +9,8 @@ import lombok.*;
 @Builder
 
 public class FoodDto {
+    private Integer foodId;
     private Integer cost;
     private String foodName;
-    private String size;
+    private Integer size;
 }

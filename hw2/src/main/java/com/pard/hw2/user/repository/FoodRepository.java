@@ -16,17 +16,19 @@ public class FoodRepository {
 
     public void saveFood(FoodDto foodDto){
         Food f = Food.builder()
+                .foodId(foodDto.getFoodId())
                 .foodName(foodDto.getFoodName())
                 .cost(foodDto.getCost())
                 .size(foodDto.getSize())
                 .build();
-        handong.put(foodDto.getCost(),f);
+        handong.put(foodDto.getFoodId(),f);
     }
 
     // Read
-    public FoodDto findById(Integer cost){
-        Food food = handong.get(cost);
+    public FoodDto findById(Integer foodId){
+        Food food = handong.get(foodId);
         return FoodDto.builder()
+                .foodId(food.getFoodId())
                 .cost(food.getCost())
                 .foodName(food.getFoodName())
                 .size(food.getSize())
@@ -35,6 +37,7 @@ public class FoodRepository {
     public List<FoodDto> findAll(){
         return handong.values().stream()
                 .map(food -> FoodDto.builder()
+                        .foodId(food.getFoodId())
                         .cost(food.getCost())
                         .foodName(food.getFoodName())
                         .size(food.getSize())
@@ -43,17 +46,18 @@ public class FoodRepository {
 
     //UPDATE
 
-    public void update(Integer cost, FoodDto foodDto){
-        Food food = handong.get(cost);
+    public void update(Integer foodId, FoodDto foodDto){
+        Food food = handong.get(foodId);
         food.setCost(foodDto.getCost());
+        food.setFoodId(foodDto.getCost());
         food.setFoodName(foodDto.getFoodName());
+        food.setSize(foodDto.getSize());
 //        handong.put(user.getStudentId(),user);
     }
 
     // DELETE
 
-    public void delete(Integer cost){
-        handong.remove(cost);
+    public void delete(Integer foodId){
+        handong.remove(foodId);
     }
 }
-

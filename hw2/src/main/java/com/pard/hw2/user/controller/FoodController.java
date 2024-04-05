@@ -15,13 +15,14 @@ public class FoodController {
     private final FoodService foodService;
 
     @PostMapping("")
-    public void saveUser(@RequestBody FoodDto foodDto){
+    public String saveUser(@RequestBody FoodDto foodDto){
         foodService.saveFood(foodDto);
+        return "success";
     }
 
-    @GetMapping("/{cost}")
-    public FoodDto findById(@PathVariable Integer cost){
-        return foodService.findById(cost);
+    @GetMapping("/{foodId}")
+    public FoodDto findById(@PathVariable Integer foodId){
+        return foodService.findById(foodId);
     }
 
     @GetMapping("")
@@ -29,14 +30,16 @@ public class FoodController {
         return foodService.findAll();
     }
 
-    @PatchMapping("/{cost}")
-    public void update(@PathVariable Integer cost,@RequestBody FoodDto foodDto){
-        foodService.update(cost,foodDto);
+    @PatchMapping("/{foodId}")
+    public FoodDto update(@PathVariable Integer foodId,@RequestBody FoodDto foodDto){
+        foodService.update(foodId,foodDto);
+        return foodService.findById(foodId);
     }
 
-    @DeleteMapping("/{cost}")
-    public void delete(@PathVariable Integer cost){
-        foodService.delete(cost);
+    @DeleteMapping("/{foodId}")
+    public String delete(@PathVariable Integer foodId){
+        foodService.delete(foodId);
+        return "success";
     }
 
 }

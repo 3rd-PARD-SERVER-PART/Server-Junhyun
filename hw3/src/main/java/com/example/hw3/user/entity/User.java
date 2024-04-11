@@ -16,9 +16,9 @@ import java.sql.Timestamp;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long bugerId;
-    @Column(name = "bugerName", length = 20)
-    private String bugerName;
+    private Long burgerId;
+    @Column(name = "burgerName", length = 20)
+    private String burgerName;
     @Column(name = "price")
     private String price;
     @Column(name = "sale")

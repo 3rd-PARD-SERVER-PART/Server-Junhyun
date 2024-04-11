@@ -18,7 +18,7 @@ public class UserService {
 
     public void save(UserDto userDto){
         User user = User.builder()
-                .bugerName(userDto.getBugerName())
+                .burgerName(userDto.getBurgerName())
                 .price(userDto.getPrice())
                 .sale(userDto.getSale())
                 .build();
@@ -28,7 +28,7 @@ public class UserService {
     public UserDto read(Long userId){
         User user = userRepository.findById(userId).get();
         return UserDto.builder()
-                .bugerName(user.getBugerName())
+                .burgerName(user.getBurgerName())
                 .price(user.getPrice())
                 .sale(user.getSale())
                 .build();
@@ -38,16 +38,16 @@ public class UserService {
         List<User> users = userRepository.findAll();
         List<UserDto> userDtos = users.stream().map(user ->
                 UserDto.builder()
-                        .bugerName(user.getBugerName())
+                        .burgerName(user.getBurgerName())
                         .price(user.getPrice())
                         .sale(user.getSale())
                         .build()).toList();
         return userDtos;
     }
 
-    public void update(Long bugerId, UserDto userDto){
-        User user = userRepository.findById(bugerId).get();
-        user.setBugerName(userDto.getBugerName());
+    public void update(Long burgerId, UserDto userDto){
+        User user = userRepository.findById(burgerId).get();
+        user.setBurgerName(userDto.getBurgerName());
         user.setPrice(userDto.getPrice());
         user.setSale((userDto.getSale()));
         userRepository.save(user);
@@ -59,43 +59,43 @@ public class UserService {
     //JPA
 
     // 이름으로 버거찾기
-    public List<UserDto> getbugerName(String name){
-        List<User> user = userRepository.findBybugerName(name);
+    public List<UserDto> getburgerName(String name){
+        List<User> user = userRepository.findByburgerName(name);
         List<UserDto> userDtos = user.stream().map(users->
                 UserDto.builder()
                         .price(users.getPrice())
-                        .bugerName(users.getBugerName())
+                        .burgerName(users.getBurgerName())
                         .sale(users.getSale())
                         .build()).toList();
         return userDtos;
     }
     // 가격으로 버거찾기
-    public List<UserDto> getbugerPrice(String price){
+    public List<UserDto> getburgerPrice(String price){
         List<User> user = userRepository.findByPrice(price);
         List<UserDto> userDtos = user.stream().map(users ->
                 UserDto.builder()
                         .price(users.getPrice())
-                        .bugerName(users.getBugerName())
+                        .burgerName(users.getBurgerName())
                         .sale(users.getSale())
                         .build()).toList();
         return userDtos;
     }
 
     //세일중인 버거찾기
-    public List<UserDto> getbugersale(String sale) {
+    public List<UserDto> getburgersale(String sale) {
         List<User> user = userRepository.findBySale(sale);
         List<UserDto> userDtos = user.stream().map(users ->
                 UserDto.builder()
                         .price(users.getPrice())
-                        .bugerName(users.getBugerName())
+                        .burgerName(users.getBurgerName())
                         .sale(users.getSale())
                         .build()).toList();
         return userDtos;
     }
 
-    public String countbuger(){
-        Long bugerCount = userRepository.count();
-        return "메뉴의 개수는 : " + bugerCount + "개";
+    public String countburger(){
+        Long burgerCount = userRepository.count();
+        return "메뉴의 개수는 : " + burgerCount + "개";
     }
 
 }

@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/buger")
+@RequestMapping("/burger")
 public class Controller {
 
     private final UserService userService;
@@ -22,9 +22,9 @@ public class Controller {
         return "저장 성공";
     }
 
-    @GetMapping("/{bugerId}")
-    public UserDto readbyId(@PathVariable Long bugerId) {
-        return userService.read(bugerId);
+    @GetMapping("/{burgerId}")
+    public UserDto readbyId(@PathVariable Long burgerId) {
+        return userService.read(burgerId);
     }
 
     @GetMapping("")
@@ -32,39 +32,39 @@ public class Controller {
         return userService.readAll();
     }
 
-    @PatchMapping("/{bugerId}")
-    public String update(@PathVariable Long bugerId, @RequestBody UserDto userDto) {
-        userService.update(bugerId, userDto);
+    @PatchMapping("/{burgerId}")
+    public String update(@PathVariable Long burgerId, @RequestBody UserDto userDto) {
+        userService.update(burgerId, userDto);
         return "업데이트 성공";
     }
-    @DeleteMapping("/{bugerId}")
-    public String delete(@PathVariable Long bugerId){
-        userService.delete(bugerId);
+    @DeleteMapping("/{burgerId}")
+    public String delete(@PathVariable Long burgerId){
+        userService.delete(burgerId);
         return "삭제 성공";
     }
 
     //JPA
 
     //이름으로 버거찾기
-    @GetMapping("/bugername")
+    @GetMapping("/burgername")
     public List<UserDto> findByName(@RequestParam String name){
-        return userService.getbugerName(name);
+        return userService.getburgerName(name);
     }
 
     //가격으로 버거 찾기
     @GetMapping("/price")
     public List<UserDto> findbByPrice(@RequestParam String price){
-        return userService.getbugerPrice(price);
+        return userService.getburgerPrice(price);
     }
 
     //세일 유무로 버거 찾기
     @GetMapping("/sale")
     public List<UserDto> findBySale(@RequestParam String sale){
-        return userService.getbugersale(sale);
+        return userService.getburgersale(sale);
     }
 
     @GetMapping("/count")
     public String count(){
-        return userService.countbuger();
+        return userService.countburger();
     }
 }

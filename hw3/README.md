@@ -18,3 +18,5 @@
 ![findbyprice.png](src%2Fmain%2Fjava%2Fcom%2Fexample%2Fhw3%2Fresult%2Ffindbyprice.png)
 3. findbysale 세일여부로 버거 찾기
 ![findbysale.png](src%2Fmain%2Fjava%2Fcom%2Fexample%2Fhw3%2Fresult%2Ffindbysale.png)
+4. count 버거의 총 개수 출력
+![count.png](src%2Fmain%2Fjava%2Fcom%2Fexample%2Fhw3%2Fresult%2Fcount.png)

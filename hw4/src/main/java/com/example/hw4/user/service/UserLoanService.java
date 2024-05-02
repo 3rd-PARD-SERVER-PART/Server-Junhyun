@@ -37,23 +37,27 @@ public class UserLoanService {
     }
 
     public boolean checkBorrow(UserLoanDTO.Create dto){
+        // isloan값을 리턴하는 함수
+        // userloandto를 받아 getbookId로 dto에 있는 bookId 받고, bookId로 해당 bookId의 isLoan값을 받아 리턴한다.
         return bookRepo.findById(dto.getBookId()).get().isLoan();
-    }// isloan값을 리턴하는 함수
-    // userloandto를 받아 getbookId로 dto에 있는 bookId 받고, bookId로 해당 bookId의 isLoan값을 받아 리턴한다.
+    }
 
     public boolean checkReturn(UserLoanDTO.Create dto){
+        //책이 반납상태인지 확인
         if(!checkBorrow(dto)) return true;
         else return false;
-    } //책이 반납상태인지 확인
+    }
 
     public void changeBookLoanToUserLoanDTO(UserLoanDTO.Create dto,boolean loan){
+        //book의 isloan값을 바꾸는 함수
+        //UserLoanDto를 받아 getBookId로 dto로 book 객채를 만들고 book entity에서 만든 change메소드로 isloan값을 바꾸고 save한다.
         Book book = bookRepo.findById(dto.getBookId()).orElseThrow();
         book.change(loan);
         bookRepo.save(book);
-    }//book의 isloan값을 바꾸는 함수
-    //UserLoanDto를 받아 getBookId로 dto로 book 객채를 만들고 book entity에서 만든 change메소드로 isloan값을 바꾸고 save한다.
+    }
 
     public String printBorrowResult(UserLoanDTO.Create dto){
+        //대여 결과를 리턴하는 함수
         if(checkReturn(dto)){
             createLoan(dto);
             changeBookLoanToUserLoanDTO(dto,true);
@@ -63,27 +67,31 @@ public class UserLoanService {
     }
 
     public boolean check(Long loanKey){
+        //userLoanHistory의 isReturn값을 리턴
+        //Book Id를 받아 UserLoan에 있는 해당 book id를 가진 loan 상태를 return한다.
         UserLoanHistory userLoanHistory = userLoanRepo.findById(loanKey).orElseThrow(()-> new IllegalArgumentException("Book not found"));
         return userLoanHistory.isReturn();
-    }//userLoanHistory의 isReturn값을 리턴
-    //Book Id를 받아 UserLoan에 있는 해당 book id를 가진 loan 상태를 return한다.
+    }
 
     public void changeUserLoan(Long loanKey,boolean loan){
+        //userLoan의 loan 값을 바꿈
+        //Book Id랑 boolean값을 받고 UserLoan 테이블에서 bookId를 가진 값의 loan값을 입력받은 boolean값으로 바꾼다.
         UserLoanHistory userLoanHistory = userLoanRepo.findById(loanKey).orElseThrow();
         userLoanHistory.change(loan);
         userLoanRepo.save(userLoanHistory);
-    }//userLoan의 loan 값을 바꿈
-    //Book Id랑 boolean값을 받고 UserLoan 테이블에서 bookId를 가진 값의 loan값을 입력받은 boolean값으로 바꾼다.
+    }
 
     public void changeBookLoanToBookId(Long loanKey,boolean loan){
+        // book의 isloan값을 바꿈
+        //loanKey값을 이용해 userLoanRepo에서 bookId값을 찾고 찾은 bookId로 book객채를 생성하고 loan값을 바꾼뒤 save한다.
         long bookId = userLoanRepo.findById(loanKey).orElseThrow().getBook().getBookId();
         Book book = bookRepo.findById(bookId).orElseThrow();
         book.change(loan);
         bookRepo.save(book);
-    }// book의 isloan값을 바꿈
-    //loanKey값을 이용해 userLoanRepo에서 bookId값을 찾고 찾은 bookId로 book객채를 생성하고 loan값을 바꾼뒤 save한다.
+    }
 
     public String printReturnResult(Long loanKey){
+        //반납 결과를 리턴하는 함수
         if(check(loanKey)) return "already returned";
         changeUserLoan(loanKey,true);
         changeBookLoanToBookId(loanKey,false);

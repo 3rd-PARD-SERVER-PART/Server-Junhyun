@@ -24,8 +24,7 @@ public class BookService {
     private final UserLoanRepo userLoanRepo;
 
     public void createBook(BookCreateDTO dto){
-        User user = userRepo.findById(dto.getUserId()).orElseThrow();
-        bookRepo.save(new Book(dto, user));
+        bookRepo.save(Book.toEntity(dto));
     }
     public List<BookReadDTO> findAll(){
         return bookRepo.findAll()

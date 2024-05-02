@@ -21,16 +21,19 @@ public class Book {
     @ColumnDefault("0")
     private boolean isLoan;
 
-    public Book(BookCreateDTO dto, User user){
+    /*public Book(BookCreateDTO dto){
         this.name = dto.getName();
-        this.bookId = dto.getUserId();
         this.isLoan = false;
-    }
-    /*public static Book toEntity(BookCreateDTO dto, User user) {
+    }*/
+
+    public static Book toEntity(BookCreateDTO dto) {
         return Book.builder()
                 .name(dto.getName())
-                .isLoan(true)
+                .isLoan(false)
                 .build();
-    }*/
+    }
+    public void change(boolean loan){
+        this.isLoan = loan;
+    }
 
 }

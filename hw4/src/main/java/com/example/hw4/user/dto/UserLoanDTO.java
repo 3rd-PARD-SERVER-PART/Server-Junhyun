@@ -16,8 +16,8 @@ public class UserLoanDTO {
     public static class Create{
         private Long id;
         private boolean isReturn;
-        private User user;
-        private Book book;
+        private Long userId;
+        private Long bookId;
     }
 
     @Getter
@@ -25,25 +25,23 @@ public class UserLoanDTO {
     @JsonInclude(JsonInclude.Include.NON_NULL)
 
     public static class Update{
-        private String userName;
-        private String bookName;
         private Long id;
         private boolean isReturn;
-        private List<BookReadDTO> books;
-        private List<UserDTO> users;
+        private BookReadDTO book;
+        private UserDTO.Read user;
 
         public Update(UserLoanHistory userLoanHistory){
             this.isReturn = userLoanHistory.isReturn();
         }
-        public Update(UserLoanHistory userLoanHistory, List<UserDTO> user){
+        public Update(UserLoanHistory userLoanHistory, UserDTO.Read user){
             this.isReturn = userLoanHistory.isReturn();
-            this.users = user;
+            this.user = user;
         }
-        public Update(UserLoanHistory userLoanHistory, List<UserDTO> user, List<BookReadDTO> books){
+        public Update(UserLoanHistory userLoanHistory, UserDTO.Read user, BookReadDTO book){
             this.id = userLoanHistory.getId();
-            this.userName = userLoanHistory.getUser().getName();
             this.isReturn = userLoanHistory.isReturn();
-            this.books = books;
+            this.book = book;
+            this.user = user;
         }
     }
 }

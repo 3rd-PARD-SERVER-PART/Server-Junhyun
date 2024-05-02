@@ -30,13 +30,16 @@ public class UserLoanHistory {
     @ColumnDefault("0")
     private boolean isReturn;
 
-    public static UserLoanHistory toEntity(UserLoanDTO.Create dto){
+    public static UserLoanHistory toEntity(UserLoanDTO.Create dto,User user, Book book){
         return UserLoanHistory.builder()
                 .id(dto.getId())
-                .user(dto.getUser())
-                .book(dto.getBook())
+                .user(user)
+                .book(book)
                 .isReturn(dto.isReturn())
                 .build();
+    }
+    public void change(boolean loan){
+        this.isReturn = loan;
     }
 
 }

@@ -7,5 +7,4 @@ import lombok.Setter;
 @Setter
 public class BookCreateDTO {
     private String name;
-    private Long userId;
 }

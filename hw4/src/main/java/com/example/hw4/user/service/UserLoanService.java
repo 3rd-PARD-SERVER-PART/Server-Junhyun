@@ -36,15 +36,15 @@ public class UserLoanService {
                 .collect(Collectors.toList());
     }
 
-    public boolean checkBorrow(UserLoanDTO.Create dto){
-        // isloan값을 리턴하는 함수
+    public boolean getBookLoan(UserLoanDTO.Create dto){
+        // book의 isloan값을 리턴하는 함수
         // userloandto를 받아 getbookId로 dto에 있는 bookId 받고, bookId로 해당 bookId의 isLoan값을 받아 리턴한다.
         return bookRepo.findById(dto.getBookId()).get().isLoan();
     }
 
-    public boolean checkReturn(UserLoanDTO.Create dto){
-        //책이 반납상태인지 확인
-        if(!checkBorrow(dto)) return true;
+    public boolean checkBookLoaned(UserLoanDTO.Create dto){
+        //책을 대여할 수 있는지 확인 만약 빌릴 수 있다면(loan = false) true return, 빌릴 수 없다면(loan = true) false return
+        if(!getBookLoan(dto)) return true;
         else return false;
     }
 
@@ -58,7 +58,7 @@ public class UserLoanService {
 
     public String printBorrowResult(UserLoanDTO.Create dto){
         //대여 결과를 리턴하는 함수
-        if(checkReturn(dto)){
+        if(checkBookLoaned(dto)){
             createLoan(dto);
             changeBookLoanToUserLoanDTO(dto,true);
             return "borrow success";
@@ -66,7 +66,7 @@ public class UserLoanService {
         else return "borrow fail";
     }
 
-    public boolean check(Long loanKey){
+    public boolean checkReturned(Long loanKey){
         //userLoanHistory의 isReturn값을 리턴
         //Book Id를 받아 UserLoan에 있는 해당 book id를 가진 loan 상태를 return한다.
         UserLoanHistory userLoanHistory = userLoanRepo.findById(loanKey).orElseThrow(()-> new IllegalArgumentException("Book not found"));
@@ -92,7 +92,7 @@ public class UserLoanService {
 
     public String printReturnResult(Long loanKey){
         //반납 결과를 리턴하는 함수
-        if(check(loanKey)) return "already returned";
+        if(checkReturned(loanKey)) return "already returned";
         changeUserLoan(loanKey,true);
         changeBookLoanToBookId(loanKey,false);
         return "return success";

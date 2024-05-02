@@ -1,8 +1,11 @@
 # 과제4
 
 ---
+swagger 주소
+http://localhost:8080/swagger-ui/index.html#/
+---
 ## 유저 추가
-### 유저1(박준현)유저2(김현승)추가
+### 유저1 유저2 추가
 <img width="1000" alt="유저1추가" src="https://github.com/3rd-PARD-SERVER-PART/Server-JunhyunPark/assets/162578133/7fd065bb-a5c9-4a5c-a57c-d004ddb2d025">
 <img width="1493" alt="유저2추가" src="https://github.com/3rd-PARD-SERVER-PART/Server-JunhyunPark/assets/162578133/1827f991-1e54-426f-89df-da9799a6243f">
 

@@ -39,24 +39,14 @@ public class UserController {
 
     @PostMapping("/borrow")
     @Operation(summary = "책 빌리기",description = "빌리려는 유저 id, 빌리고싶은 책 id를 통해 책을 빌립니다.")
-    public String borrowBook(@RequestBody UserLoanDTO.Create dto){
-        if(userLoanService.checkReturn(dto)){
-            userLoanService.createLoan(dto);
-            userLoanService.changeBookLoanToUserLoanDTO(dto,true);
-            return "borrow success";
-        }
-        else return "borrow fail";
+    public void borrowBook(@RequestBody UserLoanDTO.Create dto){
+        userLoanService.printBorrowResult(dto);
     }
+
     @PostMapping("/return/{loanKey}")
     @Operation(summary = "책 반납하기",description = "user_loan_history key를 통해 책을 반납합니다.")
-    public String returnBook(@PathVariable Long loanKey){
-        if(userLoanService.check(loanKey)) return "already return";
-        else if(!userLoanService.check(loanKey)){
-            userLoanService.changeUserLoan(loanKey,true);
-            userLoanService.changeBookLoanToBookId(loanKey,false);
-            return "return success";
-        }
-        return "";
+    public void returnBook(@PathVariable Long loanKey){
+        userLoanService.printReturnResult(loanKey);
     }
 
     /*

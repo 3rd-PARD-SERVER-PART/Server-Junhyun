@@ -19,11 +19,17 @@ http://localhost:8080/swagger-ui/index.html#/
 ### 책 목록 출력
 <img width="1493" alt="책목록 출력" src="https://github.com/3rd-PARD-SERVER-PART/Server-JunhyunPark/assets/162578133/ff785062-0501-4211-b1ca-644f81831266">
 
+### 이때 table 상황
+<img width="1159" alt="유저와 책만 추가했을 때" src="https://github.com/3rd-PARD-SERVER-PART/Server-Giyoung/assets/162578133/4c637614-7b34-48ff-83fa-7ac690d37202">
+
 ### 책 대여 성공
 유저1이 책 1을 대여
 <img width="1493" alt="책 대여 성공(유저 2가 책2를 대여)" src="https://github.com/3rd-PARD-SERVER-PART/Server-JunhyunPark/assets/162578133/60cc9401-7893-4de4-bb04-f922062ffd5e">
 유저2가 책 2를 대여
 <img width="1493" alt="책 대여 성공(유저1이 책1을 대여)" src="https://github.com/3rd-PARD-SERVER-PART/Server-JunhyunPark/assets/162578133/c300fc5f-62f1-4153-957f-d86c3563b388">
+
+### 책 대여한 후 table
+<img width="1174" alt="1차 대여후" src="https://github.com/3rd-PARD-SERVER-PART/Server-Giyoung/assets/162578133/51f4f7d2-43a5-4c55-9832-f23d8a6a2405">
 
 ### 책 대여 실패 (이미 대여된 책을 대여하려 했을 때)
 유저1이 책2를 대여 실패
@@ -35,8 +41,14 @@ http://localhost:8080/swagger-ui/index.html#/
 userloanhistory key값이 1인책(유저 1이 대여한 책1)을 반납
 <img width="1493" alt="책 반납 (useloanhistory key값이 1인 책을 반납)" src="https://github.com/3rd-PARD-SERVER-PART/Server-JunhyunPark/assets/162578133/90e9550b-874f-4204-9188-7a7e1c98484e">
 
+### 책 반납 후 table
+<img width="1176" alt="유저1이 책1 반납 후" src="https://github.com/3rd-PARD-SERVER-PART/Server-Giyoung/assets/162578133/0bb20d5b-346c-4719-b7ba-81d57c071e3f">
+
 ### 책 대여 (유저 1이 반납한 책1을 유저 2가 대여)
 <img width="1493" alt="책1 추가" src="https://github.com/3rd-PARD-SERVER-PART/Server-JunhyunPark/assets/162578133/be881539-0b4f-4f48-9bb2-7f69ea1f0b1b">
+
+### 유저 2가 대여후 table
+<img width="1174" alt="유저2가 책1 대여후" src="https://github.com/3rd-PARD-SERVER-PART/Server-Giyoung/assets/162578133/59708e07-909f-46d2-aef3-0639b936b91b">
 
 ### 도서 대출기록 출력
 <img width="1493" alt="도서 대출기록 출력1" src="https://github.com/3rd-PARD-SERVER-PART/Server-JunhyunPark/assets/162578133/ea5ff7ee-db05-4cbf-bffb-d71655ad3daa">

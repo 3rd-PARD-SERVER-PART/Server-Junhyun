@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Service
@@ -69,7 +70,7 @@ public class UserLoanService {
     public boolean checkReturned(Long loanKey){
         //userLoanHistory의 isReturn값을 리턴
         //Book Id를 받아 UserLoan에 있는 해당 book id를 가진 loan 상태를 return한다.
-        UserLoanHistory userLoanHistory = userLoanRepo.findById(loanKey).orElseThrow(()-> new IllegalArgumentException("Book not found"));
+        UserLoanHistory userLoanHistory = userLoanRepo.findById(loanKey).orElseThrow();
         return userLoanHistory.isReturn();
     }
 

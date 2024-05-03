@@ -39,7 +39,7 @@ http://localhost:8080/swagger-ui/index.html#/
 
 ### 책 반납
 userloanhistory key값이 1인책(유저 1이 대여한 책1)을 반납
-<img width="1493" alt="책 반납 (useloanhistory key값이 1인 책을 반납)" src="https://github.com/3rd-PARD-SERVER-PART/Server-JunhyunPark/assets/162578133/90e9550b-874f-4204-9188-7a7e1c98484e">
+<img width="694" alt="책 반납 (useloanhistory key값이 1인 책을 반납)" src="https://github.com/ParkJunhyun0304/PS_22100304_PJH_Java/assets/162578133/dc30ca60-8c71-462b-9576-b9bc11492a10">
 
 ### 책 반납 후 table
 <img width="1176" alt="유저1이 책1 반납 후" src="https://github.com/3rd-PARD-SERVER-PART/Server-Giyoung/assets/162578133/0bb20d5b-346c-4719-b7ba-81d57c071e3f">

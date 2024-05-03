@@ -43,9 +43,9 @@ public class UserController {
         return userLoanService.printBorrowResult(dto);
     }
 
-    @PostMapping("/return/{loanKey}")
+    @PostMapping("/return")
     @Operation(summary = "책 반납하기",description = "user_loan_history key를 통해 책을 반납합니다.")
-    public String returnBook(@PathVariable Long loanKey){
+    public String returnBook(@RequestParam Long loanKey){
         return userLoanService.printReturnResult(loanKey);
     }
 

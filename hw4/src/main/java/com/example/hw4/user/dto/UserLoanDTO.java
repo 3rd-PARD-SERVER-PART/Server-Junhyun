@@ -33,9 +33,9 @@ public class UserLoanDTO {
         public Update(UserLoanHistory userLoanHistory){
             this.isReturn = userLoanHistory.isReturn();
         }
-        public Update(UserLoanHistory userLoanHistory, UserDTO.Read user){
+        public Update(UserLoanHistory userLoanHistory, BookReadDTO book){
             this.isReturn = userLoanHistory.isReturn();
-            this.user = user;
+            this.book = book;
         }
         public Update(UserLoanHistory userLoanHistory, UserDTO.Read user, BookReadDTO book){
             this.id = userLoanHistory.getId();

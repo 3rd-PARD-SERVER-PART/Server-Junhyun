@@ -49,6 +49,11 @@ public class UserController {
         return userLoanService.printReturnResult(loanKey);
     }
 
+    @GetMapping("/search")
+    public UserLoanDTO.Update findById(@RequestParam Long id){
+        return userLoanService.findById(id);
+    }
+
     /*
     public String returnBook(@PathVariable Long bookId){
         if(userLoanService.check(bookId)) return "already return";

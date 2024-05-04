@@ -21,10 +21,10 @@ public class Book {
     @ColumnDefault("0")
     private boolean isLoan;
 
-    /*public Book(BookCreateDTO dto){
+    public Book(BookCreateDTO dto){
         this.name = dto.getName();
         this.isLoan = false;
-    }*/
+    }
 
     public static Book toEntity(BookCreateDTO dto) {
         return Book.builder()

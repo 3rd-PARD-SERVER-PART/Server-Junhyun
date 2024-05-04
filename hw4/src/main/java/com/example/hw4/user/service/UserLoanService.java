@@ -1,5 +1,6 @@
 package com.example.hw4.user.service;
 
+import com.example.hw4.book.dto.BookCreateDTO;
 import com.example.hw4.book.dto.BookReadDTO;
 import com.example.hw4.book.entity.Book;
 import com.example.hw4.book.repo.BookRepo;
@@ -36,6 +37,23 @@ public class UserLoanService {
                         new BookReadDTO(userLoanHistory.getBook())))
                 .collect(Collectors.toList());
     }
+
+    public UserLoanDTO.Update findById(Long id){
+        UserLoanHistory userLoanHistory = userLoanRepo.findById(id).orElseThrow();
+        return new UserLoanDTO.Update(userLoanHistory,
+                new UserDTO.Read(userLoanHistory.getUser()),
+                new BookReadDTO(userLoanHistory.getBook()));
+
+    } // id로 유저의 대출기록을 리턴한다.
+    // user id 넣으면 해당 유저의 대출기록을 얻고싶은데
+    // 지금은 user_loan_history의 key값으로 기록을 읽기 때문에
+    // 입력한 id가 userid가 아닌 user_loan_history의 id값(대출번호(?))로 읽고 find를 해서 아쉬움
+    // (수정사항) id를 입력 받으면 이 id를 가진 user의 대출기록을 출력하는 형태로 수정하기
+    /*
+    public boolean checkIsUser(Long userId){
+        return userRepo.findById(userId).isPresent();
+    }
+     */
 
     public boolean getBookLoan(UserLoanDTO.Create dto){
         // book의 isloan값을 리턴하는 함수

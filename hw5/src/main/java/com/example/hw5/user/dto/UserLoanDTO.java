@@ -1,14 +1,11 @@
 package com.example.hw5.user.dto;
 
 import com.example.hw5.book.dto.BookReadDTO;
-import com.example.hw5.book.entity.Book;
-import com.example.hw5.user.entity.User;
 import com.example.hw5.user.entity.UserLoanHistory;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
 
 public class UserLoanDTO {
     @Getter

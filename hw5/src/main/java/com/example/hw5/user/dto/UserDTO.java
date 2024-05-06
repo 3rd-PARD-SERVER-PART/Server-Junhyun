@@ -9,12 +9,17 @@ import lombok.Setter;
 import java.util.List;
 
 public class UserDTO {
+
     @Getter
     @Setter
     public static class Create{
         private String name;
-        private Integer age;
-        private String major;
+        private String email;
+
+        public Create(String name, String email) {
+            this.name = name;
+            this.email = email;
+        }
     }
 
     @Getter
@@ -23,22 +28,19 @@ public class UserDTO {
     public static class Read{
         private Long id;
         private String name;
-        private Integer age;
-        private String major;
+        private String email;
         private List<BookReadDTO> books;
 
         public Read(User user){
             this.id = user.getUserId();
             this.name = user.getName();
-            this.age = user.getAge();
-            this.major = user.getMajor();
+            this.email = user.getEmail();
         }
 
         public Read(User user, List<BookReadDTO> books){
             this.id = user.getUserId();
             this.name = user.getName();
-            this.age = user.getAge();
-            this.major = user.getMajor();
+            this.email = user.getEmail();
             this.books = books;
         }
     }

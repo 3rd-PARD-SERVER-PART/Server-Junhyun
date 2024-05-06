@@ -23,9 +23,7 @@ public class User {
 
     private String name;
 
-    private String major;
-
-    private Integer age;
+    private String email;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserLoanHistory> userLoanHistories = new ArrayList<>();
@@ -33,8 +31,8 @@ public class User {
     public static User toEntity(UserDTO.Create dto){
         return User.builder()
                 .name(dto.getName())
-                .age(dto.getAge())
-                .major(dto.getMajor())
+                .email(dto.getEmail())
                 .build();
     }
+
 }

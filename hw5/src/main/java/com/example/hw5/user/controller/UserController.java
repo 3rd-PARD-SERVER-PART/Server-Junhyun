@@ -2,9 +2,9 @@ package com.example.hw5.user.controller;
 
 import com.example.hw5.user.dto.UserDTO;
 import com.example.hw5.user.dto.UserLoanDTO;
-import com.example.hw5.user.entity.UserLoanHistory;
 import com.example.hw5.user.service.UserLoanService;
 import com.example.hw5.user.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

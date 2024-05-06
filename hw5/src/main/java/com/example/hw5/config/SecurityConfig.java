@@ -1,6 +1,6 @@
 package com.example.hw5.config;
 
-import com.example.seminar5.Oauth.PrincipalOauth2UserService;
+import com.example.hw5.Oauth.PrincipalOauth2UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

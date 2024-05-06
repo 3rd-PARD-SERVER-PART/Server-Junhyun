@@ -1,4 +1,4 @@
-package com.example.seminar5.Oauth;
+package com.example.hw5.Oauth;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

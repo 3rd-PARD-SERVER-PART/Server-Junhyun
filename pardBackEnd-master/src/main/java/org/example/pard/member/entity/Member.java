@@ -33,4 +33,5 @@ public class Member {
                 .name(dto.getName())
                 .build();
     }
+    //빌더를 이용함
 }

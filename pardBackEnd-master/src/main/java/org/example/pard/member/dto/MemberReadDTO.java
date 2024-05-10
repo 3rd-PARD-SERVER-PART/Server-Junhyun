@@ -24,6 +24,7 @@ public class MemberReadDTO {
                 .part(member.getPart())
                 .build();
     }
+    // memberDTO를 만듦
 }
 
 
